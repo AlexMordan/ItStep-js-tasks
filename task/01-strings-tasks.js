@@ -66,7 +66,7 @@ function getStringFromTemplate(firstName, lastName) {
  *   'Hello, Chuck Norris!' => 'Chuck Norris'
  */
 function  extractNameFromTemplate(value) {
-  let m = value.match(/Hello,\s(.*)\s(.*)!/); return `${m[1]} ${m[2]}`;
+  const m = value.match(/Hello,\s(.*)\s(.*)!/); return `${m[1]} ${m[2]}`;
 }
 
 
@@ -96,7 +96,7 @@ function getFirstChar(value) {
  *   '\tHello, World! ' => 'Hello, World!'
  */
 function removeLeadingAndTrailingWhitespaces(value) {
-  return value.replace(/^\s+|\s+$/g,'');
+  return value.replace(/^\s+|\s+$/g, '');
 }
 
 /**
@@ -142,7 +142,7 @@ function removeFirstOccurrences(str, value)  {
  *   '<a>' => 'a'
  */
 function unbracketTag(str) {
-  return str.slice(1,-1);
+  return str.slice(1, -1);
 }
 
 
@@ -199,7 +199,10 @@ function extractEmails(str) {
  *
  */
 function getRectangleString(width, height) {
-  return String.fromCharCode(9484) + String.fromCharCode(9472).repeat(width-2) + String.fromCharCode(9488) + "\n" + (String.fromCharCode(9474) + " ".repeat(width-2) + String.fromCharCode(9474) + "\n").repeat(height-2) + String.fromCharCode(9492) + String.fromCharCode(9472).repeat(width-2) + String.fromCharCode(9496) + "\n";
+  let str1=String.fromCharCode(9484)+String.fromCharCode(9472).repeat(width-2)+String.fromCharCode(9488)+'\n';
+  let str2=(String.fromCharCode(9474)+' '.repeat(width-2)+String.fromCharCode(9474)+'\n').repeat(height-2);
+  let str3=String.fromCharCode(9492)+String.fromCharCode(9472).repeat(width-2)+String.fromCharCode(9496)+'\n';
+  return str1 + str2 + str3;
 }
 
 
@@ -220,7 +223,8 @@ function getRectangleString(width, height) {
  *
  */
 function encodeToRot13(str) {
-  return str.replace(/[a-zA-Z]/g,function(a){return String.fromCharCode(((a=a.charCodeAt())<91?78:110)>a?a+13:a-13)});
+  return str.replace(/[a-zA-Z]/g, function(a){
+    return String.fromCharCode(((a=a.charCodeAt())<91?78:110)>a?a+13:a-13)});
 }
 
 /**
@@ -268,7 +272,7 @@ function isString(value) {
 function getCardId(value) {
   const cardName = 'A234567891JQK';
   const suit = '♣♦♥♠';
-return cardName.indexOf(value[0]) + (suit.indexOf(value[value.length - 1])  * 13);
+  return cardName.indexOf(value[0])+(suit.indexOf(value[value.length-1])*13);
 }
 
 module.exports = {
