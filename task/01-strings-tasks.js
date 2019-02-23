@@ -199,10 +199,10 @@ function extractEmails(str) {
  *
  */
 function getRectangleString(width, height) {
-  let str1=String.fromCharCode(9484)+String.fromCharCode(9472).repeat(width-2)+String.fromCharCode(9488)+'\n';
-  let str2=(String.fromCharCode(9474)+' '.repeat(width-2)+String.fromCharCode(9474)+'\n').repeat(height-2);
-  let str3=String.fromCharCode(9492)+String.fromCharCode(9472).repeat(width-2)+String.fromCharCode(9496)+'\n';
-  return str1 + str2 + str3;
+  const str1 = new Array(width-1).join('─');
+  const str2 = new Array(width-1).join(' ');
+  const str3 = new Array(height-1).join(`\n│${str2}│`);
+    return `┌${str1}┐${str3}\n└${str1}┘\n`;
 }
 
 
@@ -224,7 +224,7 @@ function getRectangleString(width, height) {
  */
 function encodeToRot13(str) {
   return str.replace(/[a-zA-Z]/g, function(a){
-    return String.fromCharCode(((a=a.charCodeAt())<91?78:110)>a?a+13:a-13)});
+    return String.fromCharCode(((a=a.charCodeAt())<91?78:110)>a?a+13:a-13);});
 }
 
 /**
@@ -241,7 +241,7 @@ function encodeToRot13(str) {
  *   isString(new String('test')) => true
  */
 function isString(value) {
-  return Object.prototype.toString.call(value) === "[object String]";
+  return Object.prototype.toString.call(value) === '[object String]';
 }
 
 
